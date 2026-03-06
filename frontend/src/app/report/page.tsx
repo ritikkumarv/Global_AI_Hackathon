@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import PageTransition from "@/components/UI/PageTransition";
 
@@ -24,6 +24,43 @@ export default function ReportPage() {
   const [location, setLocation] = useState("");
   const [urgency, setUrgency] = useState("medium");
   const [submitting, setSubmitting] = useState(false);
+  const [locating, setLocating] = useState(false);
+  const [photoName, setPhotoName] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const useCurrentLocation = () => {
+    if (!navigator.geolocation) {
+      setLocation("Geolocation not supported by your browser");
+      return;
+    }
+    setLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude } = pos.coords;
+        try {
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+          );
+          const data = await res.json();
+          setLocation(data.display_name || `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`);
+        } catch {
+          setLocation(`${latitude.toFixed(5)}, ${longitude.toFixed(5)}`);
+        } finally {
+          setLocating(false);
+        }
+      },
+      () => {
+        setLocation("Unable to get location — please enter manually");
+        setLocating(false);
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  };
+
+  const handlePhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) setPhotoName(file.name);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,8 +144,13 @@ export default function ReportPage() {
                 className="w-full bg-mgm-card border border-mgm-border rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-mgm-accent"
                 required
               />
-              <button type="button" className="absolute right-3 top-1/2 -translate-y-1/2 text-mgm-accent text-xs font-semibold">
-                📍 Use Current
+              <button
+                type="button"
+                onClick={useCurrentLocation}
+                disabled={locating}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-mgm-accent text-xs font-semibold hover:text-mgm-accent-dark transition disabled:opacity-50"
+              >
+                {locating ? "⏳ Locating..." : "📍 Use Current"}
               </button>
             </div>
           </div>
@@ -156,13 +198,33 @@ export default function ReportPage() {
             </div>
           </div>
 
-          {/* Photo Upload (visual only) */}
+          {/* Photo Upload */}
           <div>
             <label className="text-xs font-bold text-white uppercase tracking-wider block mb-2">Attach Photo (Optional)</label>
-            <div className="border-2 border-dashed border-mgm-border rounded-xl p-8 text-center hover:border-mgm-accent/50 transition cursor-pointer">
-              <span className="text-3xl block mb-2">📷</span>
-              <p className="text-sm text-slate-400">Drag and drop or click to upload</p>
-              <p className="text-[10px] text-slate-500 mt-1">JPG, PNG up to 10MB</p>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/jpeg,image/png"
+              className="hidden"
+              onChange={handlePhotoSelect}
+            />
+            <div
+              onClick={() => fileInputRef.current?.click()}
+              className="border-2 border-dashed border-mgm-border rounded-xl p-8 text-center hover:border-mgm-accent/50 transition cursor-pointer"
+            >
+              {photoName ? (
+                <>
+                  <span className="text-3xl block mb-2">✅</span>
+                  <p className="text-sm text-mgm-accent font-semibold">{photoName}</p>
+                  <p className="text-[10px] text-slate-500 mt-1">Click to change</p>
+                </>
+              ) : (
+                <>
+                  <span className="text-3xl block mb-2">📷</span>
+                  <p className="text-sm text-slate-400">Click to upload a photo</p>
+                  <p className="text-[10px] text-slate-500 mt-1">JPG, PNG up to 10MB</p>
+                </>
+              )}
             </div>
           </div>
 

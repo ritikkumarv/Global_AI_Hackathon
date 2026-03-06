@@ -25,9 +25,9 @@ const NAV_ITEMS = [
     section: "SYSTEM",
     items: [
       { label: "Dashboard", href: "/civic", icon: "user", badge: undefined as number | undefined },
-      { label: "Alerts", href: "#", icon: "bell", badge: 3 },
+      { label: "Alerts", href: "/alerts", icon: "bell", badge: 3 },
       { label: "Reports", href: "/report", icon: "file-text" },
-      { label: "Settings", href: "#", icon: "settings" },
+      { label: "Settings", href: "/settings", icon: "settings" },
     ],
   },
 ];

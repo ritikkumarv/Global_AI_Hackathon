@@ -42,7 +42,7 @@ export default function LayoutShell({ children }: { children: ReactNode }) {
 
       {/* Floating Chat Panel */}
       {chatOpen && (
-        <div className="fixed bottom-24 right-6 z-[9998] w-[380px] h-[520px] animate-in slide-in-from-bottom-4 fade-in duration-200">
+        <div className="fixed bottom-24 right-6 z-[9998] w-[380px] h-[520px] animate-fade-in">
           <ChatPanel />
         </div>
       )}

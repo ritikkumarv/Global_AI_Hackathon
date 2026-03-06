@@ -279,11 +279,8 @@ async def find_city_services(req: ServiceFinderRequest):
 @router.get("/business/overview")
 async def business_overview():
     """Aggregated business & economic data — LIVE from portal."""
-    import asyncio
-    planning, general = await asyncio.gather(
-        load_dataset_live("planning_development"),
-        load_dataset_live("general_information"),
-    )
+    planning = await load_dataset_live("planning_development")
+    general = await load_dataset_live("general_information")
 
     active_licenses = 4200
     new_registrations = 142
@@ -327,11 +324,8 @@ async def business_overview():
 @router.get("/infrastructure/status")
 async def infrastructure_status():
     """Aggregated infrastructure data — LIVE from portal."""
-    import asyncio
-    transport, services = await asyncio.gather(
-        load_dataset_live("transportation"),
-        load_dataset_live("city_services"),
-    )
+    transport = await load_dataset_live("transportation")
+    services = await load_dataset_live("city_services")
 
     # Count live records
     parking_count = len([r for r in transport if "parking" in r.get("_dataset", "").lower()])
@@ -400,11 +394,8 @@ async def safety_overview():
 @router.get("/culture/overview")
 async def culture_overview():
     """Aggregated culture & recreation data — LIVE from portal (parks, POI, libraries)."""
-    import asyncio
-    culture, markers = await asyncio.gather(
-        load_dataset_live("recreation_culture"),
-        load_dataset_live("historical_markers"),
-    )
+    culture = await load_dataset_live("recreation_culture")
+    markers = await load_dataset_live("historical_markers")
 
     venues = []
     for item in culture[:50]:

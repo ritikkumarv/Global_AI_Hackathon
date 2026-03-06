@@ -5,44 +5,10 @@ Integrates with https://opendata.montgomeryal.gov (ArcGIS Hub) for real-time cit
 import json
 import logging
 import os
-import time
-from functools import wraps
 from typing import Optional
 from app.core.config import settings
 
 logger = logging.getLogger(__name__)
-
-
-# ──────────────── Async TTL Cache Decorator ────────────────
-
-def async_ttl_cache(ttl_seconds: int = 300):
-    """Simple async memoization cache with TTL (time-to-live) expiry.
-    Caches results of async functions for `ttl_seconds` (default 5 min)."""
-    _cache: dict[str, tuple[float, object]] = {}
-
-    def decorator(func):
-        @wraps(func)
-        async def wrapper(*args, **kwargs):
-            key = f"{args}:{kwargs}"
-            now = time.monotonic()
-            if key in _cache:
-                expiry, result = _cache[key]
-                if now < expiry:
-                    logger.debug(f"Cache HIT for {func.__name__}({args})")
-                    return result
-            result = await func(*args, **kwargs)
-            _cache[key] = (now + ttl_seconds, result)
-            logger.debug(f"Cache MISS → stored {func.__name__}({args}) for {ttl_seconds}s")
-            return result
-
-        def cache_clear():
-            _cache.clear()
-            logger.info(f"Cache cleared for {func.__name__}")
-
-        wrapper.cache_clear = cache_clear
-        return wrapper
-    return decorator
-
 
 # All dataset categories mapping to local fallback file names
 DATASET_FILES = {
@@ -104,12 +70,11 @@ def load_dataset(category: str) -> list[dict]:
         return json.load(f)
 
 
-@async_ttl_cache(ttl_seconds=300)  # Cache live portal data for 5 minutes
 async def load_dataset_live(category: str) -> list[dict]:
     """
     Load dataset from the LIVE Montgomery Open Data Portal.
     Falls back to local JSON if the portal is unreachable.
-    Cached for 5 minutes to avoid hammering the ArcGIS portal.
+    Returns a dict with 'data', 'source', and 'count'.
     """
     from app.services.portal import fetch_portal_category
 
