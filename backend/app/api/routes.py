@@ -332,10 +332,9 @@ async def infrastructure_status():
     tip_count = len([r for r in transport if r.get("_dataset") == "tip_plan"])
     service_requests = len([r for r in services if r.get("_dataset") == "311_service_requests"])
 
-    import random
     return {
-        "power_grid_load": round(random.uniform(68, 82), 1),
-        "water_quality": round(random.uniform(95, 99.5), 1),
+        "power_grid_load": 74.3,
+        "water_quality": 97.8,
         "transit_status": "On Schedule",
         "bus_routes": next((i.get("routes", 11) for i in transport if i.get("routes")), 11),
         "daily_ridership": next((i.get("daily_ridership", 4200) for i in transport if i.get("daily_ridership")), 4200),

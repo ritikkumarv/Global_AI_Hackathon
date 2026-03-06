@@ -26,7 +26,7 @@ class Settings:
     # Bright Data Scraping Browser (Puppeteer / Playwright over WSS)
     BRIGHT_DATA_BROWSER_WSS: str = os.getenv(
         "BRIGHT_DATA_BROWSER_WSS",
-        "wss://brd-customer-hl_4a058a12-zone-scraping_browser1:moxhq12bumej@brd.superproxy.io:9222",
+        "",
     )
 
     # NewsAPI (fallback for news scraping)

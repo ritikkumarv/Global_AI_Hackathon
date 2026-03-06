@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
+
 interface MapHighlight {
   name: string;
   lat: number;
@@ -79,7 +81,7 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
     setIsLoading(true);
 
     try {
-      const res = await fetch("/api/v1/chat", {
+      const res = await fetch(`${API}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: messageText }),
