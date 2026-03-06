@@ -345,17 +345,21 @@ async def fetch_portal_category(category: str, max_per_source: int = 200) -> lis
     from app.data.loader import CATEGORY_DISPLAY_NAMES
     cat_display = CATEGORY_DISPLAY_NAMES.get(category, category)
 
+    # Build tasks for all dataset keys and fetch them in parallel
+    keys_and_urls = [(key, PORTAL_ENDPOINTS.get(key)) for key in dataset_keys]
+    keys_and_urls = [(k, u) for k, u in keys_and_urls if u]  # filter missing
+
+    raw_results = await asyncio.gather(
+        *[query_feature_service(service_url=url, result_record_count=max_per_source)
+          for _, url in keys_and_urls],
+        return_exceptions=True,
+    )
+
     all_records = []
-    for key in dataset_keys:
-        url = PORTAL_ENDPOINTS.get(key)
-        if not url:
+    for (key, _url), raw_records in zip(keys_and_urls, raw_results):
+        if isinstance(raw_records, Exception):
+            logger.warning(f"Portal query failed for '{key}': {raw_records}")
             continue
-
-        raw_records = await query_feature_service(
-            service_url=url,
-            result_record_count=max_per_source,
-        )
-
         for raw in raw_records:
             normalized = _normalize_record(raw, key, cat_display)
             all_records.append(normalized)
