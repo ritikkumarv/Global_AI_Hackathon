@@ -29,9 +29,10 @@ function LiveMapInner() {
       zoom: 12,
       zoomControl: false,
       attributionControl: false,
+      preferCanvas: true,
     });
     L.tileLayer(
-      "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+      "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
       { subdomains: "abcd", maxZoom: 19 }
     ).addTo(map);
     mapRef.current = map;

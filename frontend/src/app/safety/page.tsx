@@ -22,8 +22,8 @@ function IncidentMapInner() {
 
   useEffect(() => {
     if (!L || !containerRef.current || mapRef.current) return;
-    const map = L.map(containerRef.current, { center: [32.3792, -86.3077], zoom: 12 });
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+    const map = L.map(containerRef.current, { center: [32.3792, -86.3077], zoom: 12, preferCanvas: true });
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
       attribution: "&copy; OSM", subdomains: "abcd", maxZoom: 19,
     }).addTo(map);
     mapRef.current = map;

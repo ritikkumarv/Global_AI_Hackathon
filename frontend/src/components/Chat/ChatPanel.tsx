@@ -21,7 +21,7 @@ interface ChatMessage {
 }
 
 interface ChatPanelProps {
-  onHighlights: (highlights: MapHighlight[]) => void;
+  onHighlights?: (highlights: MapHighlight[]) => void;
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -104,7 +104,7 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
 
       // Send highlights to map
       if (data.map_highlights?.length > 0) {
-        onHighlights(data.map_highlights);
+        onHighlights?.(data.map_highlights);
       }
     } catch (err) {
       const errorMsg: ChatMessage = {
@@ -123,7 +123,7 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
 
   const resetChat = async () => {
     try {
-      await fetch("/api/v1/chat/reset", { method: "POST" });
+      await fetch(`${API}/chat/reset`, { method: "POST" });
     } catch {}
     setMessages([
       {
@@ -134,15 +134,15 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
         timestamp: new Date(),
       },
     ]);
-    onHighlights([]);
+    onHighlights?.([]);
   };
 
   return (
-    <div className="flex flex-col h-full glass-card overflow-hidden">
+    <div className="flex flex-col h-full bg-mgm-card border border-mgm-border rounded-2xl overflow-hidden shadow-2xl">
       {/* Chat Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-montgomery-gold/20">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-mgm-border bg-mgm-sidebar">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-montgomery-gold/20 border border-montgomery-gold flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-mgm-accent/20 border border-mgm-accent flex items-center justify-center">
             <span className="text-sm">🤖</span>
           </div>
           <div>
@@ -157,7 +157,7 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
         </div>
         <button
           onClick={resetChat}
-          className="text-xs px-2 py-1 rounded bg-gray-700/50 text-gray-400 hover:text-white transition"
+          className="text-xs px-2 py-1 rounded bg-mgm-card-hover text-slate-400 hover:text-white transition"
         >
           Reset
         </button>
@@ -175,13 +175,13 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
             <div
               className={`max-w-[85%] rounded-2xl px-4 py-2.5 ${
                 msg.role === "user"
-                  ? "bg-montgomery-gold text-montgomery-darker rounded-br-md"
-                  : "bg-montgomery-card border border-montgomery-gold/10 rounded-bl-md"
+                  ? "bg-mgm-accent text-white rounded-br-md"
+                  : "bg-mgm-card-hover border border-mgm-border rounded-bl-md"
               }`}
             >
               <p
                 className={`text-sm leading-relaxed whitespace-pre-wrap ${
-                  msg.role === "user" ? "text-montgomery-darker" : "text-gray-200"
+                  msg.role === "user" ? "text-white" : "text-gray-200"
                 }`}
               >
                 {msg.content}
@@ -193,7 +193,7 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
                   {msg.sources.map((src) => (
                     <span
                       key={src}
-                      className="text-[10px] px-2 py-0.5 rounded-full bg-montgomery-gold/20 text-montgomery-gold"
+                      className="text-[10px] px-2 py-0.5 rounded-full bg-mgm-accent/20 text-mgm-accent"
                     >
                       {CATEGORY_LABELS[src] || src}
                     </span>
@@ -203,7 +203,7 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
 
               {/* Map highlight indicator */}
               {msg.map_highlights && msg.map_highlights.length > 0 && (
-                <p className="mt-1.5 text-[10px] text-montgomery-gold/70 flex items-center gap-1">
+                <p className="mt-1.5 text-[10px] text-mgm-accent/70 flex items-center gap-1">
                   📍 {msg.map_highlights.length} location(s) shown on map
                 </p>
               )}
@@ -214,11 +214,11 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
         {/* Loading indicator */}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-montgomery-card border border-montgomery-gold/10 rounded-2xl rounded-bl-md px-4 py-3">
+            <div className="bg-mgm-card-hover border border-mgm-border rounded-2xl rounded-bl-md px-4 py-3">
               <div className="flex gap-1.5">
-                <div className="typing-dot w-2 h-2 rounded-full bg-montgomery-gold" />
-                <div className="typing-dot w-2 h-2 rounded-full bg-montgomery-gold" />
-                <div className="typing-dot w-2 h-2 rounded-full bg-montgomery-gold" />
+                <div className="typing-dot w-2 h-2 rounded-full bg-mgm-accent" />
+                <div className="typing-dot w-2 h-2 rounded-full bg-mgm-accent" />
+                <div className="typing-dot w-2 h-2 rounded-full bg-mgm-accent" />
               </div>
             </div>
           </div>
@@ -230,13 +230,13 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
       {/* Suggestions */}
       {messages.length <= 1 && (
         <div className="px-4 pb-2">
-          <p className="text-xs text-gray-500 mb-2">Try asking:</p>
+          <p className="text-xs text-slate-500 mb-2">Try asking:</p>
           <div className="flex flex-wrap gap-1.5">
             {SUGGESTIONS.map((s) => (
               <button
                 key={s}
                 onClick={() => sendMessage(s)}
-                className="text-[11px] px-2.5 py-1 rounded-full border border-montgomery-gold/20 text-gray-400 hover:text-montgomery-gold hover:border-montgomery-gold/50 transition"
+                className="text-[11px] px-2.5 py-1 rounded-full border border-mgm-border text-slate-400 hover:text-mgm-accent hover:border-mgm-accent/50 transition"
               >
                 {s}
               </button>
@@ -246,7 +246,7 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
       )}
 
       {/* Input */}
-      <div className="p-3 border-t border-montgomery-gold/20">
+      <div className="p-3 border-t border-mgm-border">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -260,12 +260,12 @@ export default function ChatPanel({ onHighlights }: ChatPanelProps) {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask about Montgomery..."
             disabled={isLoading}
-            className="flex-1 bg-montgomery-card border border-montgomery-gold/20 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-montgomery-gold/50 transition disabled:opacity-50"
+            className="flex-1 bg-mgm-card-hover border border-mgm-border rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-mgm-accent/50 transition disabled:opacity-50"
           />
           <button
             type="submit"
             disabled={isLoading || !input.trim()}
-            className="px-4 py-2.5 bg-montgomery-gold rounded-xl text-montgomery-darker font-semibold text-sm hover:bg-montgomery-gold/90 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-4 py-2.5 bg-mgm-accent rounded-xl text-white font-semibold text-sm hover:bg-mgm-accent-dark transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Send
           </button>
