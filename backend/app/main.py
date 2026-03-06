@@ -2,6 +2,7 @@
 MontgomeryAI - Smart City Dashboard Backend
 FastAPI application with RAG-powered AI chatbot and real-time city data.
 """
+import app.compat  # noqa: F401  — Python 3.14+ compatibility patches (must be first)
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings

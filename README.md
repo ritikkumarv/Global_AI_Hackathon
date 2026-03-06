@@ -91,7 +91,7 @@ A sleek, user-friendly interface that pulls real-time data from multiple city se
 
 ### Prerequisites
 
-- **Python 3.10+**
+- **Python 3.10+** (tested on Python 3.14)
 - **Node.js 18+**
 - **OpenAI API Key** (required — for AI chatbot & sentiment analysis)
 - **Bright Data API Key** (recommended — for live news scraping)
@@ -104,9 +104,9 @@ A sleek, user-friendly interface that pulls real-time data from multiple city se
 cd backend
 
 # Create virtual environment
-python -m venv venv
-venv\Scripts\activate      # Windows
-# source venv/bin/activate  # Mac/Linux
+python -m venv .venv
+.venv\Scripts\activate      # Windows
+# source .venv/bin/activate  # Mac/Linux
 
 # Install dependencies
 pip install -r requirements.txt
@@ -116,7 +116,7 @@ copy .env.example .env
 # Edit .env and add your API keys
 
 # Run the backend
-uvicorn app.main:app --reload --port 8000
+python -m uvicorn app.main:app --reload --port 8000
 ```
 
 ### 2. Frontend Setup
@@ -146,8 +146,7 @@ Navigate to **http://localhost:3000**
 |-------|-----------|
 | **Frontend** | Next.js 14, React 18, TypeScript |
 | **UI Styling** | Tailwind CSS, Custom Dark Theme |
-| **Map** | Leaflet.js (CARTO dark tiles) |
-| **Charts** | Recharts |
+| **Map** | Leaflet.js (CARTO Voyager tiles) |
 | **Animations** | Framer Motion, CSS Animations |
 | **Backend** | Python FastAPI |
 | **GenAI / LLM** | OpenAI GPT-4o-mini via LangChain |
@@ -162,8 +161,8 @@ Navigate to **http://localhost:3000**
 
 ## ✨ Key Features
 
-- **Interactive Dark-Theme Map** — 8 toggleable data layers with glowing colored markers
-- **AI Chatbot ("Ask Montgomery")** — RAG-powered Q&A across ALL city datasets
+- **Interactive City Map** — 8 toggleable data layers with glowing colored markers on CARTO Voyager tiles
+- **AI Chatbot ("Ask Montgomery")** — RAG-powered Q&A across ALL city datasets, floating widget on every page
 - **🌐 Live News via Bright Data** — Real-time web scraping of Montgomery news & events
 - **📊 AI Sentiment Analysis** — Classifies scraped news as positive/neutral/negative with trends
 - **🔍 AI Service Finder** — Natural language search to find the right city service
@@ -171,7 +170,8 @@ Navigate to **http://localhost:3000**
 - **Real-Time Weather** — Live temperature, humidity, wind for Montgomery
 - **Cross-Dataset AI Insights** — Ask questions that combine multiple datasets
 - **Map-Chat Integration** — AI responses highlight relevant locations on map
-- **Responsive Design** — Works on desktop and mobile
+- **9 Dedicated Pages** — Landing, Business, Safety, Infrastructure, Culture, Civic, Report, Venue Detail
+- **Responsive Design** — Works on desktop and mobile with collapsible sidebar
 - **Live Stats Ticker** — Real-time dashboard metrics
 - **Graceful Fallbacks** — Bright Data → NewsAPI → Mock Data; ensures demo always works
 
@@ -183,8 +183,10 @@ Navigate to **http://localhost:3000**
 Global_AI_Hackathon/
 ├── backend/
 │   ├── app/
-│   │   ├── api/routes.py          # All API endpoints
-│   │   ├── core/config.py         # Configuration
+│   │   ├── main.py                # FastAPI app entry point
+│   │   ├── compat.py              # Python 3.14 compatibility patches
+│   │   ├── api/routes.py          # All API endpoints (27 routes)
+│   │   ├── core/config.py         # Configuration & environment
 │   │   ├── data/
 │   │   │   ├── loader.py          # Dataset loader & processor
 │   │   │   └── datasets/          # All 8 JSON datasets
@@ -200,18 +202,20 @@ Global_AI_Hackathon/
 │   ├── src/
 │   │   ├── app/
 │   │   │   ├── layout.tsx         # Root layout
-│   │   │   ├── page.tsx           # Main dashboard page
-│   │   │   └── globals.css        # Global styles
-│   │   ├── components/
-│   │   │   ├── Map/CityMap.tsx    # Interactive Leaflet map
-│   │   │   ├── Chat/ChatPanel.tsx # AI chatbot interface
-│   │   │   ├── News/NewsSentimentPanel.tsx  # News & sentiment
-│   │   │   ├── ServiceFinder/ServiceFinderPanel.tsx # Service finder
-│   │   │   ├── Dashboard/        # Stats bar & layer panel
-│   │   │   └── Layout/Header.tsx  # Header with live clock
-│   │   ├── hooks/useApi.ts        # Data fetching hooks
-│   │   ├── lib/api.ts             # API client
-│   │   └── types/index.ts         # TypeScript types
+│   │   │   ├── page.tsx           # Landing page (Hero, Stats, Features, Map, AI Chat)
+│   │   │   ├── business/          # Business & Economic Overview page
+│   │   │   ├── infrastructure/    # Infrastructure Monitor page
+│   │   │   ├── safety/            # Public Safety & Emergency page
+│   │   │   ├── culture/           # Culture & Recreation page
+│   │   │   ├── civic/             # Civic Dashboard page
+│   │   │   ├── report/            # Issue Report page
+│   │   │   ├── venue/[id]/        # Venue detail page
+│   │   │   └── globals.css        # Global styles & animations
+│   │   └── components/
+│   │       ├── Chat/ChatPanel.tsx  # AI chatbot (floating widget)
+│   │       ├── Layout/Sidebar.tsx  # Responsive sidebar navigation
+│   │       ├── Layout/LayoutShell.tsx # App shell with chat FAB
+│   │       └── UI/                # Shared UI (LiveBadge, Skeletons, etc.)
 │   ├── package.json
 │   └── tailwind.config.js
 └── README.md
@@ -219,15 +223,17 @@ Global_AI_Hackathon/
 
 ---
 
-## 🌐 API Endpoints
+## 🌐 API Endpoints (27 routes)
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/api/v1/health` | Health check |
+| GET | `/api/v1/info` | App metadata |
 | GET | `/api/v1/stats` | Dashboard statistics |
 | GET | `/api/v1/categories` | All category summaries |
 | GET | `/api/v1/datasets` | All datasets |
-| GET | `/api/v1/datasets/{cat}` | Single dataset |
+| GET | `/api/v1/datasets/{cat}` | Single dataset (ArcGIS) |
+| GET | `/api/v1/datasets/{cat}/local` | Single dataset (local JSON) |
 | GET | `/api/v1/map/points` | All map markers |
 | GET | `/api/v1/map/points/{cat}` | Map markers by category |
 | GET | `/api/v1/weather` | Current weather (live) |
@@ -238,8 +244,16 @@ Global_AI_Hackathon/
 | GET | `/api/v1/alerts` | City emergency alerts |
 | GET | `/api/v1/sentiment` | Sentiment analysis report |
 | POST | `/api/v1/sentiment/analyze` | Analyze custom text sentiment |
-| POST | `/api/v1/services/find` | AI service finder |
 | GET | `/api/v1/services/categories` | All service categories |
+| POST | `/api/v1/services/find` | AI service finder |
+| GET | `/api/v1/business/overview` | Business & economic overview |
+| GET | `/api/v1/infrastructure/status` | Infrastructure status |
+| GET | `/api/v1/safety/overview` | Public safety overview |
+| GET | `/api/v1/culture/overview` | Culture & recreation overview |
+| GET | `/api/v1/portal/stats` | ArcGIS portal statistics |
+| GET | `/api/v1/portal/search` | Search portal datasets |
+| GET | `/api/v1/portal/datasets` | Browse all portal datasets |
+| GET | `/api/v1/portal/query/{key}` | Query specific portal dataset |
 
 ---
 
