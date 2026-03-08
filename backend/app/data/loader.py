@@ -4,8 +4,10 @@ Integrates with https://opendata.montgomeryal.gov (ArcGIS Hub) for real-time cit
 """
 import json
 import logging
+import math
 import os
 from typing import Optional
+from cachetools import TTLCache
 from app.core.config import settings
 
 logger = logging.getLogger(__name__)
@@ -56,6 +58,20 @@ CATEGORY_COLORS = {
 }
 
 
+def _clean_nans(obj):
+    """Recursively replace NaN/Infinity floats with None so the response is valid JSON."""
+    if isinstance(obj, float) and (math.isnan(obj) or math.isinf(obj)):
+        return None
+    if isinstance(obj, dict):
+        return {k: _clean_nans(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_clean_nans(v) for v in obj]
+    return obj
+
+
+# 5-minute TTL Cache for live data requests
+live_data_cache = TTLCache(maxsize=100, ttl=300)
+
 def load_dataset(category: str) -> list[dict]:
     """Load a single dataset by category key (local JSON fallback only)."""
     filename = DATASET_FILES.get(category)
@@ -72,17 +88,24 @@ def load_dataset(category: str) -> list[dict]:
 
 async def load_dataset_live(category: str) -> list[dict]:
     """
-    Load dataset from the LIVE Montgomery Open Data Portal.
+    Load dataset from the LIVE Montgomery Open Data Portal, using a 5-minute TTL cache.
     Falls back to local JSON if the portal is unreachable.
     Returns a dict with 'data', 'source', and 'count'.
     """
+    # Check cache first
+    cached_data = live_data_cache.get(category)
+    if cached_data is not None:
+        return [dict(item) for item in cached_data]
+
     from app.services.portal import fetch_portal_category
 
     try:
         live_data = await fetch_portal_category(category)
         if live_data:
             logger.info(f"✓ Live data for '{category}': {len(live_data)} records from portal")
-            return live_data
+            clean_data = [_clean_nans(item) for item in live_data]
+            live_data_cache[category] = clean_data  # Store sanitised copy in cache
+            return list(clean_data)  # Return a fresh copy
     except Exception as e:
         logger.warning(f"Portal fetch failed for '{category}': {e}")
 
@@ -96,10 +119,8 @@ async def load_dataset_with_source(category: str) -> dict:
     Load dataset and return with source metadata.
     Returns: {"data": [...], "source": "live"|"local", "count": int}
     """
-    from app.services.portal import fetch_portal_category
-
     try:
-        live_data = await fetch_portal_category(category)
+        live_data = await load_dataset_live(category)
         if live_data:
             return {
                 "data": live_data,

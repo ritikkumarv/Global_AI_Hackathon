@@ -2631,3 +2631,423 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2026-03-08 13:55:03,046 [DEBUG] httpcore.http11: response_closed.complete
 2026-03-08 13:55:03,047 [DEBUG] openai._base_client: HTTP Response: POST https://integrate.api.nvidia.com/v1/chat/completions "200 OK" Headers({'date': 'Sun, 08 Mar 2026 08:25:03 GMT', 'content-type': 'application/json', 'content-length': '2265', 'connection': 'keep-alive', 'access-control-expose-headers': 'nvcf-reqid', 'nvcf-reqid': '11ea801b-96d0-4b63-80f0-026a378791f0', 'nvcf-status': 'fulfilled', 'server': 'uvicorn', 'vary': 'Origin'})
 2026-03-08 13:55:03,049 [DEBUG] openai._base_client: request_id: None
+2026-03-08 13:58:53,724 [INFO] app.main: Starting MontgomeryAI Backend with verbose logging enabled.
+2026-03-08 15:42:23,377 [INFO] app.main: Starting MontgomeryAI Backend with verbose logging enabled.
+2026-03-08 15:42:40,222 [DEBUG] httpcore.connection: connect_tcp.started host='gis.montgomeryal.gov' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:42:40,656 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002B6196CAF90>
+2026-03-08 15:42:40,657 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000002B619648870> server_hostname='gis.montgomeryal.gov' timeout=15
+2026-03-08 15:42:40,941 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002B619656850>
+2026-03-08 15:42:40,942 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:42:40,943 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:42:40,944 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:42:40,944 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:42:40,945 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:42:41,782 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Cache-Control', b'must-revalidate,max-age=0,public'), (b'Transfer-Encoding', b'chunked'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Content-Encoding', b'gzip'), (b'ETag', b'"c82c02d4"'), (b'Vary', b'Origin'), (b'Server', b'Microsoft-IIS/10.0'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; Version=1; Max-Age=60; Expires=Sun, 08 Mar 2026 10:13:40 GMT; Path=/server/rest; HttpOnly'), (b'Date', b'Sun, 08 Mar 2026 10:12:41 GMT')])
+2026-03-08 15:42:41,783 [INFO] httpx: HTTP Request: GET https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:42:41,784 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:42:41,785 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:42:41,785 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:42:41,786 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:42:41,788 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:42:41,789 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:42:41,790 [INFO] app.services.portal: Portal query OK: https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 → 200 records
+2026-03-08 15:42:42,157 [DEBUG] httpcore.connection: connect_tcp.started host='services7.arcgis.com' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:42:42,269 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002B619780A50>
+2026-03-08 15:42:42,270 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000002B6197E00F0> server_hostname='services7.arcgis.com' timeout=15
+2026-03-08 15:42:42,370 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002B6197190F0>
+2026-03-08 15:42:42,371 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:42:42,371 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:42:42,371 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:42:42,372 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:42:42,372 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:42:43,011 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 08 Mar 2026 10:12:42 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'5903'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'public, max-age=30, s-maxage=30'), (b'Content-Encoding', b'gzip'), (b'Last-Modified', b'Tue, 05 Aug 2025 17:58:35 GMT'), (b'ETag', b'sd3313_-1143656551'), (b'Vary', b'X-Esri-Authorization'), (b'Request-Context', b'appId=cid-v1:e760746d-7077-47f1-a125-f6cc9f1bba28'), (b'Request-Context', b'appId=cid-v1:df0fefdc-3099-4f25-a42c-d213d1e16940'), (b'x-arcgis-upstream', b'us1h07c00-services'), (b'Strict-Transport-Security', b'max-age=63072000'), (b'X-ArcGIS-Trace-Id', b'20260308T101241Z-16b754995742cvpzhC1MAA9qew00000005qg0000000090dr'), (b'x-esri-query-request-units', b'3'), (b'x-esri-tiles-basic-query-mode', b'true'), (b'x-esri-tiles-basic-query-type', b'Basic'), (b'x-esri-org-request-units-per-min', b'usage=3;max=6000'), (b'x-esri-query-geometry-field-name', b'Shape'), (b'X-ArcGIS-Correlation-Id', b'91c9996f55c091ed'), (b'X-ArcGIS-Instance', b'lf3xzxihb000001'), (b'Access-Control-Expose-Headers', b'Request-Context'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Headers', b'Content-Type, Authorization, X-Esri-Authorization'), (b'Access-Control-Allow-Credentials', b'true'), (b'x-azure-ref', b'20260308T101241Z-16b754995742cvpzhC1MAA9qew00000005qg0000000090dr'), (b'x-fd-int-roxy-purgeid', b'0'), (b'X-Cache', b'TCP_MISS'), (b'Accept-Ranges', b'bytes')])
+2026-03-08 15:42:43,012 [INFO] httpx: HTTP Request: GET https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:42:43,012 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:42:43,013 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:42:43,013 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:42:43,014 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:42:43,015 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:42:43,016 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:42:43,017 [INFO] app.services.portal: Portal query OK: https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1 → 21 records
+2026-03-08 15:42:43,017 [INFO] app.services.portal: Portal fetch for 'city_services': 221 total records
+2026-03-08 15:43:11,124 [DEBUG] httpcore.connection: connect_tcp.started host='gis.montgomeryal.gov' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:43:11,386 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002B619719A70>
+2026-03-08 15:43:11,386 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000002B619648230> server_hostname='gis.montgomeryal.gov' timeout=15
+2026-03-08 15:43:11,664 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002B619731490>
+2026-03-08 15:43:11,665 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:43:11,667 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:43:11,667 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:43:11,667 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:43:11,668 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:43:12,501 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Cache-Control', b'must-revalidate,max-age=0,public'), (b'Transfer-Encoding', b'chunked'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Content-Encoding', b'gzip'), (b'ETag', b'"c82c02d4"'), (b'Vary', b'Origin'), (b'Server', b'Microsoft-IIS/10.0'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; Version=1; Max-Age=60; Expires=Sun, 08 Mar 2026 10:14:11 GMT; Path=/server/rest; HttpOnly'), (b'Date', b'Sun, 08 Mar 2026 10:13:11 GMT')])
+2026-03-08 15:43:12,505 [INFO] httpx: HTTP Request: GET https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:43:12,507 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:43:12,509 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:43:12,510 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:43:12,511 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:43:12,515 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:43:12,516 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:43:12,517 [INFO] app.services.portal: Portal query OK: https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 → 200 records
+2026-03-08 15:43:12,827 [DEBUG] httpcore.connection: connect_tcp.started host='services7.arcgis.com' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:43:12,873 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002B619693680>
+2026-03-08 15:43:12,873 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000002B619648730> server_hostname='services7.arcgis.com' timeout=15
+2026-03-08 15:43:12,956 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002B619693790>
+2026-03-08 15:43:12,957 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:43:12,958 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:43:12,958 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:43:12,959 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:43:12,959 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:43:13,001 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 08 Mar 2026 10:13:12 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'5903'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'public, max-age=30, s-maxage=30'), (b'Content-Encoding', b'gzip'), (b'Last-Modified', b'Tue, 05 Aug 2025 17:58:35 GMT'), (b'ETag', b'sd3313_-1143656551'), (b'Vary', b'X-Esri-Authorization'), (b'Request-Context', b'appId=cid-v1:e760746d-7077-47f1-a125-f6cc9f1bba28'), (b'Request-Context', b'appId=cid-v1:df0fefdc-3099-4f25-a42c-d213d1e16940'), (b'x-arcgis-upstream', b'us1h07c00-services'), (b'Strict-Transport-Security', b'max-age=63072000'), (b'X-ArcGIS-Trace-Id', b'20260308T101241Z-16b754995742cvpzhC1MAA9qew00000005qg0000000090dr'), (b'x-esri-query-request-units', b'3'), (b'x-esri-tiles-basic-query-mode', b'true'), (b'x-esri-tiles-basic-query-type', b'Basic'), (b'x-esri-org-request-units-per-min', b'usage=3;max=6000'), (b'x-esri-query-geometry-field-name', b'Shape'), (b'X-ArcGIS-Correlation-Id', b'91c9996f55c091ed'), (b'X-ArcGIS-Instance', b'lf3xzxihb000001'), (b'Access-Control-Expose-Headers', b'Request-Context'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Headers', b'Content-Type, Authorization, X-Esri-Authorization'), (b'Access-Control-Allow-Credentials', b'true'), (b'x-azure-ref', b'20260308T101312Z-16b75499574fcq9nhC1MAA03qs0000000asg000000000vxu'), (b'x-fd-int-roxy-purgeid', b'0'), (b'X-Cache', b'TCP_HIT'), (b'X-Cache-Info', b'L1_T2'), (b'Accept-Ranges', b'bytes')])
+2026-03-08 15:43:13,002 [INFO] httpx: HTTP Request: GET https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:43:13,003 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:43:13,004 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:43:13,004 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:43:13,004 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:43:13,005 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:43:13,005 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:43:13,006 [INFO] app.services.portal: Portal query OK: https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1 → 21 records
+2026-03-08 15:43:13,006 [INFO] app.services.portal: Portal fetch for 'city_services': 221 total records
+2026-03-08 15:44:46,415 [INFO] app.main: Starting MontgomeryAI Backend with verbose logging enabled.
+2026-03-08 15:46:16,926 [INFO] app.main: Starting MontgomeryAI Backend with verbose logging enabled.
+2026-03-08 15:46:25,553 [DEBUG] httpcore.connection: connect_tcp.started host='gis.montgomeryal.gov' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:46:26,149 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD86476F90>
+2026-03-08 15:46:26,150 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000001CD863F4870> server_hostname='gis.montgomeryal.gov' timeout=15
+2026-03-08 15:46:26,558 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD863F2850>
+2026-03-08 15:46:26,559 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:46:26,561 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:46:26,561 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:46:26,562 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:46:26,563 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:46:27,376 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Cache-Control', b'must-revalidate,max-age=0,public'), (b'Transfer-Encoding', b'chunked'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Content-Encoding', b'gzip'), (b'ETag', b'"c82c02d4"'), (b'Vary', b'Origin'), (b'Server', b'Microsoft-IIS/10.0'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; Version=1; Max-Age=60; Expires=Sun, 08 Mar 2026 10:17:26 GMT; Path=/server/rest; HttpOnly'), (b'Date', b'Sun, 08 Mar 2026 10:16:26 GMT')])
+2026-03-08 15:46:27,379 [INFO] httpx: HTTP Request: GET https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:46:27,379 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:46:27,382 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:46:27,383 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:46:27,384 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:46:27,390 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:46:27,391 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:46:27,392 [INFO] app.services.portal: Portal query OK: https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 → 200 records
+2026-03-08 15:46:27,779 [DEBUG] httpcore.connection: connect_tcp.started host='services7.arcgis.com' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:46:27,874 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD86530A50>
+2026-03-08 15:46:27,874 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000001CD86568050> server_hostname='services7.arcgis.com' timeout=15
+2026-03-08 15:46:27,968 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD864C8D60>
+2026-03-08 15:46:27,969 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:46:27,970 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:46:27,971 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:46:27,972 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:46:27,972 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:46:28,370 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 08 Mar 2026 10:16:27 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'5903'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'public, max-age=30, s-maxage=30'), (b'Content-Encoding', b'gzip'), (b'Last-Modified', b'Tue, 05 Aug 2025 17:58:35 GMT'), (b'ETag', b'sd3313_-1143656551'), (b'Vary', b'X-Esri-Authorization'), (b'Request-Context', b'appId=cid-v1:e760746d-7077-47f1-a125-f6cc9f1bba28'), (b'Request-Context', b'appId=cid-v1:df0fefdc-3099-4f25-a42c-d213d1e16940'), (b'x-arcgis-upstream', b'us1h07c00-services'), (b'Strict-Transport-Security', b'max-age=63072000'), (b'X-ArcGIS-Trace-Id', b'20260308T101627Z-1864bdd9bb4lhk72hC1MAAvt040000000yy0000000001x5m'), (b'x-esri-query-request-units', b'3'), (b'x-esri-tiles-basic-query-mode', b'true'), (b'x-esri-tiles-basic-query-type', b'Basic'), (b'x-esri-org-request-units-per-min', b'usage=3;max=6000'), (b'x-esri-query-geometry-field-name', b'Shape'), (b'X-ArcGIS-Correlation-Id', b'0c9fa04487e6ec1a'), (b'X-ArcGIS-Instance', b'lf3xzxihb000000'), (b'Access-Control-Expose-Headers', b'Request-Context'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Headers', b'Content-Type, Authorization, X-Esri-Authorization'), (b'Access-Control-Allow-Credentials', b'true'), (b'x-azure-ref', b'20260308T101627Z-1864bdd9bb4lhk72hC1MAAvt040000000yy0000000001x5m'), (b'x-fd-int-roxy-purgeid', b'0'), (b'X-Cache', b'TCP_MISS'), (b'Accept-Ranges', b'bytes')])
+2026-03-08 15:46:28,372 [INFO] httpx: HTTP Request: GET https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:46:28,373 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:46:28,374 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:46:28,375 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:46:28,376 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:46:28,378 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:46:28,379 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:46:28,380 [INFO] app.services.portal: Portal query OK: https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1 → 21 records
+2026-03-08 15:46:28,381 [INFO] app.services.portal: Portal fetch for 'city_services': 221 total records
+2026-03-08 15:48:22,635 [DEBUG] httpcore.connection: connect_tcp.started host='gis.montgomeryal.gov' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:48:22,982 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD864C96E0>
+2026-03-08 15:48:22,983 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000001CD863F4730> server_hostname='gis.montgomeryal.gov' timeout=15
+2026-03-08 15:48:23,293 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD864DD370>
+2026-03-08 15:48:23,294 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:48:23,295 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:48:23,296 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:48:23,296 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:48:23,297 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:48:24,212 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Cache-Control', b'must-revalidate,max-age=0,public'), (b'Transfer-Encoding', b'chunked'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Content-Encoding', b'gzip'), (b'ETag', b'"c82c02d4"'), (b'Vary', b'Origin'), (b'Server', b'Microsoft-IIS/10.0'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; Version=1; Max-Age=60; Expires=Sun, 08 Mar 2026 10:19:23 GMT; Path=/server/rest; HttpOnly'), (b'Date', b'Sun, 08 Mar 2026 10:18:23 GMT')])
+2026-03-08 15:48:24,214 [INFO] httpx: HTTP Request: GET https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:48:24,215 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:48:24,217 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:48:24,217 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:48:24,218 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:48:24,224 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:48:24,225 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:48:24,226 [INFO] app.services.portal: Portal query OK: https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 → 200 records
+2026-03-08 15:48:24,557 [DEBUG] httpcore.connection: connect_tcp.started host='services7.arcgis.com' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:48:24,649 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD86443570>
+2026-03-08 15:48:24,649 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000001CD8664C5F0> server_hostname='services7.arcgis.com' timeout=15
+2026-03-08 15:48:24,732 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD86443680>
+2026-03-08 15:48:24,733 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:48:24,734 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:48:24,734 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:48:24,735 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:48:24,735 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:48:25,079 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 08 Mar 2026 10:18:24 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'5903'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'public, max-age=30, s-maxage=30'), (b'Content-Encoding', b'gzip'), (b'Last-Modified', b'Tue, 05 Aug 2025 17:58:35 GMT'), (b'ETag', b'sd3313_-1143656551'), (b'Vary', b'X-Esri-Authorization'), (b'Request-Context', b'appId=cid-v1:e760746d-7077-47f1-a125-f6cc9f1bba28'), (b'Request-Context', b'appId=cid-v1:df0fefdc-3099-4f25-a42c-d213d1e16940'), (b'x-arcgis-upstream', b'us1h07c00-services'), (b'Strict-Transport-Security', b'max-age=63072000'), (b'X-ArcGIS-Trace-Id', b'20260308T101824Z-r1b9f4dfc55p2br9hC1MAAuem00000000zs0000000004mh6'), (b'x-esri-query-request-units', b'3'), (b'x-esri-tiles-basic-query-mode', b'true'), (b'x-esri-tiles-basic-query-type', b'Basic'), (b'x-esri-org-request-units-per-min', b'usage=3;max=6000'), (b'x-esri-query-geometry-field-name', b'Shape'), (b'X-ArcGIS-Correlation-Id', b'f7f4fd2cb39f04e8'), (b'X-ArcGIS-Instance', b'lf3xzxihb000001'), (b'Access-Control-Expose-Headers', b'Request-Context'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Headers', b'Content-Type, Authorization, X-Esri-Authorization'), (b'Access-Control-Allow-Credentials', b'true'), (b'x-azure-ref', b'20260308T101824Z-r1b9f4dfc55p2br9hC1MAAuem00000000zs0000000004mh6'), (b'x-fd-int-roxy-purgeid', b'0'), (b'X-Cache', b'TCP_MISS'), (b'Accept-Ranges', b'bytes')])
+2026-03-08 15:48:25,080 [INFO] httpx: HTTP Request: GET https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:48:25,080 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:48:25,081 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:48:25,082 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:48:25,082 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:48:25,084 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:48:25,085 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:48:25,085 [INFO] app.services.portal: Portal query OK: https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1 → 21 records
+2026-03-08 15:48:25,086 [INFO] app.services.portal: Portal fetch for 'city_services': 221 total records
+2026-03-08 15:49:58,673 [DEBUG] httpcore.connection: connect_tcp.started host='gis.montgomeryal.gov' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:49:59,035 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD864E8550>
+2026-03-08 15:49:59,036 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000001CD863F4230> server_hostname='gis.montgomeryal.gov' timeout=15
+2026-03-08 15:49:59,346 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD864E8650>
+2026-03-08 15:49:59,348 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:49:59,349 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:49:59,350 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:49:59,351 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:49:59,354 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:50:00,265 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Cache-Control', b'must-revalidate,max-age=0,public'), (b'Transfer-Encoding', b'chunked'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Content-Encoding', b'gzip'), (b'ETag', b'"c82c02d4"'), (b'Vary', b'Origin'), (b'Server', b'Microsoft-IIS/10.0'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; Version=1; Max-Age=60; Expires=Sun, 08 Mar 2026 10:20:59 GMT; Path=/server/rest; HttpOnly'), (b'Date', b'Sun, 08 Mar 2026 10:19:58 GMT')])
+2026-03-08 15:50:00,266 [INFO] httpx: HTTP Request: GET https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:50:00,267 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:50:00,268 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:50:00,269 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:50:00,269 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:50:00,273 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:50:00,274 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:50:00,275 [INFO] app.services.portal: Portal query OK: https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 → 200 records
+2026-03-08 15:50:00,626 [DEBUG] httpcore.connection: connect_tcp.started host='services7.arcgis.com' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:50:00,727 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD864EF890>
+2026-03-08 15:50:00,727 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000001CD8664C2D0> server_hostname='services7.arcgis.com' timeout=15
+2026-03-08 15:50:00,809 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD864EFA70>
+2026-03-08 15:50:00,809 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:50:00,810 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:50:00,810 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:50:00,810 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:50:00,811 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:50:01,289 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 08 Mar 2026 10:20:00 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'5903'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'public, max-age=30, s-maxage=30'), (b'Content-Encoding', b'gzip'), (b'Last-Modified', b'Tue, 05 Aug 2025 17:58:35 GMT'), (b'ETag', b'sd3313_-1143656551'), (b'Vary', b'X-Esri-Authorization'), (b'Request-Context', b'appId=cid-v1:e760746d-7077-47f1-a125-f6cc9f1bba28'), (b'Request-Context', b'appId=cid-v1:df0fefdc-3099-4f25-a42c-d213d1e16940'), (b'x-arcgis-upstream', b'us1h07c00-services'), (b'Strict-Transport-Security', b'max-age=63072000'), (b'X-ArcGIS-Trace-Id', b'20260308T102000Z-r1b9f4dfc55fkjd8hC1MAApcv400000007cg0000000008tg'), (b'x-esri-query-request-units', b'3'), (b'x-esri-tiles-basic-query-mode', b'true'), (b'x-esri-tiles-basic-query-type', b'Basic'), (b'x-esri-org-request-units-per-min', b'usage=3;max=6000'), (b'x-esri-query-geometry-field-name', b'Shape'), (b'X-ArcGIS-Correlation-Id', b'ab8b65f573e5cfe4'), (b'X-ArcGIS-Instance', b'lf3xzxihb000008'), (b'Access-Control-Expose-Headers', b'Request-Context'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Headers', b'Content-Type, Authorization, X-Esri-Authorization'), (b'Access-Control-Allow-Credentials', b'true'), (b'x-azure-ref', b'20260308T102000Z-r1b9f4dfc55fkjd8hC1MAApcv400000007cg0000000008tg'), (b'x-fd-int-roxy-purgeid', b'0'), (b'X-Cache', b'TCP_MISS'), (b'Accept-Ranges', b'bytes')])
+2026-03-08 15:50:01,290 [INFO] httpx: HTTP Request: GET https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:50:01,290 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:50:01,291 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:50:01,291 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:50:01,291 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:50:01,293 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:50:01,293 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:50:01,293 [INFO] app.services.portal: Portal query OK: https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1 → 21 records
+2026-03-08 15:50:01,294 [INFO] app.services.portal: Portal fetch for 'city_services': 221 total records
+2026-03-08 15:50:25,946 [DEBUG] httpcore.connection: connect_tcp.started host='gis.montgomeryal.gov' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:50:26,298 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD8661D630>
+2026-03-08 15:50:26,298 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000001CD863F47D0> server_hostname='gis.montgomeryal.gov' timeout=15
+2026-03-08 15:50:26,585 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD8661E190>
+2026-03-08 15:50:26,586 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:50:26,587 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:50:26,588 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:50:26,588 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:50:26,589 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:50:27,502 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Cache-Control', b'must-revalidate,max-age=0,public'), (b'Transfer-Encoding', b'chunked'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Content-Encoding', b'gzip'), (b'ETag', b'"c82c02d4"'), (b'Vary', b'Origin'), (b'Server', b'Microsoft-IIS/10.0'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; Version=1; Max-Age=60; Expires=Sun, 08 Mar 2026 10:21:26 GMT; Path=/server/rest; HttpOnly'), (b'Date', b'Sun, 08 Mar 2026 10:20:26 GMT')])
+2026-03-08 15:50:27,508 [INFO] httpx: HTTP Request: GET https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:50:27,509 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:50:27,511 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:50:27,512 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:50:27,513 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:50:27,515 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:50:27,516 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:50:27,516 [INFO] app.services.portal: Portal query OK: https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 → 200 records
+2026-03-08 15:50:27,832 [DEBUG] httpcore.connection: connect_tcp.started host='services7.arcgis.com' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:50:27,890 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD866217E0>
+2026-03-08 15:50:27,890 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000001CD8664C690> server_hostname='services7.arcgis.com' timeout=15
+2026-03-08 15:50:27,992 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001CD8649AF90>
+2026-03-08 15:50:27,993 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:50:27,994 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:50:27,995 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:50:27,995 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:50:27,996 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:50:28,044 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 08 Mar 2026 10:20:27 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'5903'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'public, max-age=30, s-maxage=30'), (b'Content-Encoding', b'gzip'), (b'Last-Modified', b'Tue, 05 Aug 2025 17:58:35 GMT'), (b'ETag', b'sd3313_-1143656551'), (b'Vary', b'X-Esri-Authorization'), (b'Request-Context', b'appId=cid-v1:e760746d-7077-47f1-a125-f6cc9f1bba28'), (b'Request-Context', b'appId=cid-v1:df0fefdc-3099-4f25-a42c-d213d1e16940'), (b'x-arcgis-upstream', b'us1h07c00-services'), (b'Strict-Transport-Security', b'max-age=63072000'), (b'X-ArcGIS-Trace-Id', b'20260308T074805Z-1864bdd9bb4g9xdrhC1MAAvb5c0000000ytg000000001qcf'), (b'x-esri-query-request-units', b'3'), (b'x-esri-tiles-basic-query-mode', b'true'), (b'x-esri-tiles-basic-query-type', b'Basic'), (b'x-esri-org-request-units-per-min', b'usage=6;max=6000'), (b'x-esri-query-geometry-field-name', b'Shape'), (b'X-ArcGIS-Correlation-Id', b'70396138649ae3ae'), (b'X-ArcGIS-Instance', b'lf3xzxihb000008'), (b'Access-Control-Expose-Headers', b'Request-Context'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Headers', b'Content-Type, Authorization, X-Esri-Authorization'), (b'Access-Control-Allow-Credentials', b'true'), (b'x-azure-ref', b'20260308T102027Z-16b754995745qw9vhC1MAAm2qg0000000tw000000000154k'), (b'x-fd-int-roxy-purgeid', b'0'), (b'X-Cache', b'TCP_REMOTE_HIT'), (b'Accept-Ranges', b'bytes')])
+2026-03-08 15:50:28,046 [INFO] httpx: HTTP Request: GET https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:50:28,046 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:50:28,047 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:50:28,047 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:50:28,047 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:50:28,049 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:50:28,050 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:50:28,050 [INFO] app.services.portal: Portal query OK: https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1 → 21 records
+2026-03-08 15:50:28,051 [INFO] app.services.portal: Portal fetch for 'city_services': 221 total records
+2026-03-08 15:50:51,022 [INFO] app.main: Starting MontgomeryAI Backend with verbose logging enabled.
+2026-03-08 15:51:00,370 [DEBUG] httpcore.connection: connect_tcp.started host='gis.montgomeryal.gov' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:51:00,681 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000019C5FDBAF90>
+2026-03-08 15:51:00,681 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x0000019C5FD38870> server_hostname='gis.montgomeryal.gov' timeout=15
+2026-03-08 15:51:00,993 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000019C5FD42850>
+2026-03-08 15:51:00,994 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:51:00,996 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:51:00,996 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:51:00,997 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:51:00,998 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:51:01,909 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Cache-Control', b'must-revalidate,max-age=0,public'), (b'Transfer-Encoding', b'chunked'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Content-Encoding', b'gzip'), (b'ETag', b'"c82c02d4"'), (b'Vary', b'Origin'), (b'Server', b'Microsoft-IIS/10.0'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; Version=1; Max-Age=60; Expires=Sun, 08 Mar 2026 10:22:00 GMT; Path=/server/rest; HttpOnly'), (b'Date', b'Sun, 08 Mar 2026 10:21:01 GMT')])
+2026-03-08 15:51:01,911 [INFO] httpx: HTTP Request: GET https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:51:01,912 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:51:01,914 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:51:01,914 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:51:01,915 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:51:01,919 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:51:01,920 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:51:01,921 [INFO] app.services.portal: Portal query OK: https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 → 200 records
+2026-03-08 15:51:02,247 [DEBUG] httpcore.connection: connect_tcp.started host='services7.arcgis.com' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:51:02,377 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000019C5FE70A50>
+2026-03-08 15:51:02,377 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x0000019C5FEA8050> server_hostname='services7.arcgis.com' timeout=15
+2026-03-08 15:51:02,471 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000019C5FE08FC0>
+2026-03-08 15:51:02,473 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:51:02,473 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:51:02,474 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:51:02,474 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:51:02,474 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:51:02,831 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 08 Mar 2026 10:21:02 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'5903'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'public, max-age=30, s-maxage=30'), (b'Content-Encoding', b'gzip'), (b'Last-Modified', b'Tue, 05 Aug 2025 17:58:35 GMT'), (b'ETag', b'sd3313_-1143656551'), (b'Vary', b'X-Esri-Authorization'), (b'Request-Context', b'appId=cid-v1:e760746d-7077-47f1-a125-f6cc9f1bba28'), (b'Request-Context', b'appId=cid-v1:df0fefdc-3099-4f25-a42c-d213d1e16940'), (b'x-arcgis-upstream', b'us1h07c00-services'), (b'Strict-Transport-Security', b'max-age=63072000'), (b'X-ArcGIS-Trace-Id', b'20260308T074805Z-1864bdd9bb4g9xdrhC1MAAvb5c0000000ytg000000001qcf'), (b'x-esri-query-request-units', b'3'), (b'x-esri-tiles-basic-query-mode', b'true'), (b'x-esri-tiles-basic-query-type', b'Basic'), (b'x-esri-org-request-units-per-min', b'usage=6;max=6000'), (b'x-esri-query-geometry-field-name', b'Shape'), (b'X-ArcGIS-Correlation-Id', b'70396138649ae3ae'), (b'X-ArcGIS-Instance', b'lf3xzxihb000008'), (b'Access-Control-Expose-Headers', b'Request-Context'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Headers', b'Content-Type, Authorization, X-Esri-Authorization'), (b'Access-Control-Allow-Credentials', b'true'), (b'x-azure-ref', b'20260308T102102Z-1864bdd9bb4795x6hC1MAAe9280000000z70000000002s91'), (b'x-fd-int-roxy-purgeid', b'0'), (b'X-Cache-Info', b'L2_T1'), (b'X-Cache', b'TCP_REMOTE_HIT'), (b'Accept-Ranges', b'bytes')])
+2026-03-08 15:51:02,834 [INFO] httpx: HTTP Request: GET https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:51:02,835 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:51:02,836 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:51:02,836 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:51:02,837 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:51:02,839 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:51:02,840 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:51:02,840 [INFO] app.services.portal: Portal query OK: https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1 → 21 records
+2026-03-08 15:51:02,842 [INFO] app.services.portal: Portal fetch for 'city_services': 221 total records
+2026-03-08 15:53:07,094 [DEBUG] httpcore.connection: connect_tcp.started host='gis.montgomeryal.gov' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:53:07,454 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000019C5FE09940>
+2026-03-08 15:53:07,455 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x0000019C5FD38730> server_hostname='gis.montgomeryal.gov' timeout=15
+2026-03-08 15:53:07,764 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000019C5FE1D490>
+2026-03-08 15:53:07,765 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:53:07,766 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:53:07,767 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:53:07,767 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:53:07,768 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:53:08,682 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Cache-Control', b'must-revalidate,max-age=0,public'), (b'Transfer-Encoding', b'chunked'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Content-Encoding', b'gzip'), (b'ETag', b'"c82c02d4"'), (b'Vary', b'Origin'), (b'Server', b'Microsoft-IIS/10.0'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; Version=1; Max-Age=60; Expires=Sun, 08 Mar 2026 10:24:07 GMT; Path=/server/rest; HttpOnly'), (b'Date', b'Sun, 08 Mar 2026 10:23:08 GMT')])
+2026-03-08 15:53:08,684 [INFO] httpx: HTTP Request: GET https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:53:08,685 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:53:08,687 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:53:08,687 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:53:08,688 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:53:08,693 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:53:08,694 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:53:08,695 [INFO] app.services.portal: Portal query OK: https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 → 200 records
+2026-03-08 15:53:09,015 [DEBUG] httpcore.connection: connect_tcp.started host='services7.arcgis.com' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:53:09,070 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000019C5FD83680>
+2026-03-08 15:53:09,071 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x0000019C5FF905F0> server_hostname='services7.arcgis.com' timeout=15
+2026-03-08 15:53:09,154 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000019C5FD83790>
+2026-03-08 15:53:09,155 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:53:09,156 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:53:09,157 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:53:09,157 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:53:09,158 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:53:09,572 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 08 Mar 2026 10:23:09 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'5903'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'public, max-age=30, s-maxage=30'), (b'Content-Encoding', b'gzip'), (b'Last-Modified', b'Tue, 05 Aug 2025 17:58:35 GMT'), (b'ETag', b'sd3313_-1143656551'), (b'Vary', b'X-Esri-Authorization'), (b'Request-Context', b'appId=cid-v1:e760746d-7077-47f1-a125-f6cc9f1bba28'), (b'Request-Context', b'appId=cid-v1:df0fefdc-3099-4f25-a42c-d213d1e16940'), (b'x-arcgis-upstream', b'us1h07c00-services'), (b'Strict-Transport-Security', b'max-age=63072000'), (b'X-ArcGIS-Trace-Id', b'20260308T102000Z-r1b9f4dfc55fkjd8hC1MAApcv400000007cg0000000008tg'), (b'x-esri-query-request-units', b'3'), (b'x-esri-tiles-basic-query-mode', b'true'), (b'x-esri-tiles-basic-query-type', b'Basic'), (b'x-esri-org-request-units-per-min', b'usage=3;max=6000'), (b'x-esri-query-geometry-field-name', b'Shape'), (b'X-ArcGIS-Correlation-Id', b'ab8b65f573e5cfe4'), (b'X-ArcGIS-Instance', b'lf3xzxihb000008'), (b'Access-Control-Expose-Headers', b'Request-Context'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Headers', b'Content-Type, Authorization, X-Esri-Authorization'), (b'Access-Control-Allow-Credentials', b'true'), (b'x-azure-ref', b'20260308T102308Z-16b75499574tr7zthC1MAAqp7n00000004vg000000001epy'), (b'x-fd-int-roxy-purgeid', b'0'), (b'X-Cache', b'TCP_REMOTE_HIT'), (b'X-Cache-Info', b'L1_T2'), (b'Accept-Ranges', b'bytes')])
+2026-03-08 15:53:09,573 [INFO] httpx: HTTP Request: GET https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:53:09,574 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:53:09,575 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:53:09,576 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:53:09,577 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:53:09,578 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:53:09,579 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:53:09,580 [INFO] app.services.portal: Portal query OK: https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1 → 21 records
+2026-03-08 15:53:09,581 [INFO] app.services.portal: Portal fetch for 'city_services': 221 total records
+2026-03-08 15:54:11,159 [INFO] app.main: Starting MontgomeryAI Backend with verbose logging enabled.
+2026-03-08 15:54:53,612 [INFO] app.main: Starting MontgomeryAI Backend with verbose logging enabled.
+2026-03-08 15:55:08,403 [DEBUG] httpcore.connection: connect_tcp.started host='gis.montgomeryal.gov' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:55:08,696 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x00000241740E6F90>
+2026-03-08 15:55:08,697 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x0000024174068870> server_hostname='gis.montgomeryal.gov' timeout=15
+2026-03-08 15:55:09,006 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000024174072850>
+2026-03-08 15:55:09,008 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:55:09,009 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:55:09,009 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:55:09,009 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:55:09,010 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:55:10,027 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Cache-Control', b'must-revalidate,max-age=0,public'), (b'Transfer-Encoding', b'chunked'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Content-Encoding', b'gzip'), (b'ETag', b'"c82c02d4"'), (b'Vary', b'Origin'), (b'Server', b'Microsoft-IIS/10.0'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; Version=1; Max-Age=60; Expires=Sun, 08 Mar 2026 10:26:08 GMT; Path=/server/rest; HttpOnly'), (b'Date', b'Sun, 08 Mar 2026 10:25:08 GMT')])
+2026-03-08 15:55:10,030 [INFO] httpx: HTTP Request: GET https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:55:10,031 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:55:10,033 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:55:10,034 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:55:10,034 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:55:10,038 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:55:10,039 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:55:10,040 [INFO] app.services.portal: Portal query OK: https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 → 200 records
+2026-03-08 15:55:10,376 [DEBUG] httpcore.connection: connect_tcp.started host='services7.arcgis.com' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:55:10,462 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000024174194A50>
+2026-03-08 15:55:10,463 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x00000241742000F0> server_hostname='services7.arcgis.com' timeout=15
+2026-03-08 15:55:10,551 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000024174138FC0>
+2026-03-08 15:55:10,552 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:55:10,552 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:55:10,553 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:55:10,554 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:55:10,554 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:55:10,953 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 08 Mar 2026 10:25:10 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'5903'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'public, max-age=30, s-maxage=30'), (b'Content-Encoding', b'gzip'), (b'Last-Modified', b'Tue, 05 Aug 2025 17:58:35 GMT'), (b'ETag', b'sd3313_-1143656551'), (b'Vary', b'X-Esri-Authorization'), (b'Request-Context', b'appId=cid-v1:e760746d-7077-47f1-a125-f6cc9f1bba28'), (b'Request-Context', b'appId=cid-v1:df0fefdc-3099-4f25-a42c-d213d1e16940'), (b'x-arcgis-upstream', b'us1h07c00-services'), (b'Strict-Transport-Security', b'max-age=63072000'), (b'X-ArcGIS-Trace-Id', b'20260308T074805Z-1864bdd9bb4g9xdrhC1MAAvb5c0000000ytg000000001qcf'), (b'x-esri-query-request-units', b'3'), (b'x-esri-tiles-basic-query-mode', b'true'), (b'x-esri-tiles-basic-query-type', b'Basic'), (b'x-esri-org-request-units-per-min', b'usage=6;max=6000'), (b'x-esri-query-geometry-field-name', b'Shape'), (b'X-ArcGIS-Correlation-Id', b'70396138649ae3ae'), (b'X-ArcGIS-Instance', b'lf3xzxihb000008'), (b'Access-Control-Expose-Headers', b'Request-Context'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Headers', b'Content-Type, Authorization, X-Esri-Authorization'), (b'Access-Control-Allow-Credentials', b'true'), (b'x-azure-ref', b'20260308T102510Z-r1b9f4dfc55lxbvnhC1MAAtfcw00000010m0000000005s87'), (b'x-fd-int-roxy-purgeid', b'0'), (b'X-Cache-Info', b'L2_T1'), (b'X-Cache', b'TCP_REMOTE_HIT'), (b'Accept-Ranges', b'bytes')])
+2026-03-08 15:55:10,954 [INFO] httpx: HTTP Request: GET https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:55:10,954 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:55:10,955 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:55:10,955 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:55:10,956 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:55:10,957 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:55:10,958 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:55:10,959 [INFO] app.services.portal: Portal query OK: https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1 → 21 records
+2026-03-08 15:55:10,960 [INFO] app.services.portal: Portal fetch for 'city_services': 221 total records
+2026-03-08 15:55:10,961 [INFO] app.data.loader: ✓ Live data for 'city_services': 221 records from portal
+2026-03-08 15:58:38,857 [INFO] app.main: Starting MontgomeryAI Backend with verbose logging enabled.
+2026-03-08 15:58:50,921 [DEBUG] httpcore.connection: connect_tcp.started host='gis.montgomeryal.gov' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:58:51,209 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000017E23AFAF90>
+2026-03-08 15:58:51,209 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x0000017E23A74870> server_hostname='gis.montgomeryal.gov' timeout=15
+2026-03-08 15:58:51,506 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000017E23A86850>
+2026-03-08 15:58:51,507 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:58:51,508 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:58:51,509 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:58:51,510 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:58:51,511 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:58:52,342 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Cache-Control', b'must-revalidate,max-age=0,public'), (b'Transfer-Encoding', b'chunked'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Content-Encoding', b'gzip'), (b'ETag', b'"c82c02d4"'), (b'Vary', b'Origin'), (b'Server', b'Microsoft-IIS/10.0'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; Version=1; Max-Age=60; Expires=Sun, 08 Mar 2026 10:29:51 GMT; Path=/server/rest; HttpOnly'), (b'Date', b'Sun, 08 Mar 2026 10:28:51 GMT')])
+2026-03-08 15:58:52,345 [INFO] httpx: HTTP Request: GET https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:58:52,347 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:58:52,348 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:58:52,349 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:58:52,350 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:58:52,356 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:58:52,357 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:58:52,359 [INFO] app.services.portal: Portal query OK: https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 → 200 records
+2026-03-08 15:58:52,673 [DEBUG] httpcore.connection: connect_tcp.started host='services7.arcgis.com' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 15:58:52,750 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000017E23BB0A50>
+2026-03-08 15:58:52,750 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x0000017E23BF8190> server_hostname='services7.arcgis.com' timeout=15
+2026-03-08 15:58:52,834 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000017E23B48E90>
+2026-03-08 15:58:52,835 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 15:58:52,837 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 15:58:52,837 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 15:58:52,838 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 15:58:52,838 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 15:58:53,263 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 08 Mar 2026 10:28:52 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'5903'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'public, max-age=30, s-maxage=30'), (b'Content-Encoding', b'gzip'), (b'Last-Modified', b'Tue, 05 Aug 2025 17:58:35 GMT'), (b'ETag', b'sd3313_-1143656551'), (b'Vary', b'X-Esri-Authorization'), (b'Request-Context', b'appId=cid-v1:e760746d-7077-47f1-a125-f6cc9f1bba28'), (b'Request-Context', b'appId=cid-v1:df0fefdc-3099-4f25-a42c-d213d1e16940'), (b'x-arcgis-upstream', b'us1h07c00-services'), (b'Strict-Transport-Security', b'max-age=63072000'), (b'X-ArcGIS-Trace-Id', b'20260308T074805Z-1864bdd9bb4g9xdrhC1MAAvb5c0000000ytg000000001qcf'), (b'x-esri-query-request-units', b'3'), (b'x-esri-tiles-basic-query-mode', b'true'), (b'x-esri-tiles-basic-query-type', b'Basic'), (b'x-esri-org-request-units-per-min', b'usage=6;max=6000'), (b'x-esri-query-geometry-field-name', b'Shape'), (b'X-ArcGIS-Correlation-Id', b'70396138649ae3ae'), (b'X-ArcGIS-Instance', b'lf3xzxihb000008'), (b'Access-Control-Expose-Headers', b'Request-Context'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Headers', b'Content-Type, Authorization, X-Esri-Authorization'), (b'Access-Control-Allow-Credentials', b'true'), (b'x-azure-ref', b'20260308T102852Z-r1b9f4dfc55c2k92hC1MAA603c0000000zvg000000001me8'), (b'x-fd-int-roxy-purgeid', b'0'), (b'X-Cache-Info', b'L1_T2'), (b'X-Cache', b'TCP_REMOTE_HIT'), (b'Accept-Ranges', b'bytes')])
+2026-03-08 15:58:53,265 [INFO] httpx: HTTP Request: GET https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 15:58:53,266 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 15:58:53,267 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 15:58:53,267 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 15:58:53,269 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 15:58:53,272 [DEBUG] httpcore.connection: close.started
+2026-03-08 15:58:53,273 [DEBUG] httpcore.connection: close.complete
+2026-03-08 15:58:53,274 [INFO] app.services.portal: Portal query OK: https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1 → 21 records
+2026-03-08 15:58:53,275 [INFO] app.services.portal: Portal fetch for 'city_services': 221 total records
+2026-03-08 15:58:53,276 [INFO] app.data.loader: ✓ Live data for 'city_services': 221 records from portal
+2026-03-08 16:00:57,849 [INFO] app.main: Starting MontgomeryAI Backend with verbose logging enabled.
+2026-03-08 16:01:19,377 [DEBUG] httpcore.connection: connect_tcp.started host='gis.montgomeryal.gov' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 16:01:19,670 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002BF3CA26F90>
+2026-03-08 16:01:19,670 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000002BF3C9A09B0> server_hostname='gis.montgomeryal.gov' timeout=15
+2026-03-08 16:01:19,936 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002BF3C9B2850>
+2026-03-08 16:01:19,937 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 16:01:19,937 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 16:01:19,938 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 16:01:19,938 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 16:01:19,938 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 16:01:20,760 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Cache-Control', b'must-revalidate,max-age=0,public'), (b'Transfer-Encoding', b'chunked'), (b'Content-Type', b'application/json; charset=UTF-8'), (b'Content-Encoding', b'gzip'), (b'ETag', b'"c82c02d4"'), (b'Vary', b'Origin'), (b'Server', b'Microsoft-IIS/10.0'), (b'X-Content-Type-Options', b'nosniff'), (b'Set-Cookie', b'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; Version=1; Max-Age=60; Expires=Sun, 08 Mar 2026 10:32:19 GMT; Path=/server/rest; HttpOnly'), (b'Date', b'Sun, 08 Mar 2026 10:31:20 GMT')])
+2026-03-08 16:01:20,761 [INFO] httpx: HTTP Request: GET https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 16:01:20,762 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 16:01:20,763 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 16:01:20,763 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 16:01:20,763 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 16:01:20,764 [DEBUG] httpcore.connection: close.started
+2026-03-08 16:01:20,765 [DEBUG] httpcore.connection: close.complete
+2026-03-08 16:01:20,765 [INFO] app.services.portal: Portal query OK: https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 → 200 records
+2026-03-08 16:01:20,968 [DEBUG] httpcore.connection: connect_tcp.started host='services7.arcgis.com' port=443 local_address=None timeout=15 socket_options=None
+2026-03-08 16:01:21,026 [DEBUG] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002BF3CAE4A50>
+2026-03-08 16:01:21,026 [DEBUG] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x000002BF3CAC85F0> server_hostname='services7.arcgis.com' timeout=15
+2026-03-08 16:01:21,109 [DEBUG] httpcore.connection: start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002BF3CA790F0>
+2026-03-08 16:01:21,110 [DEBUG] httpcore.http11: send_request_headers.started request=<Request [b'GET']>
+2026-03-08 16:01:21,110 [DEBUG] httpcore.http11: send_request_headers.complete
+2026-03-08 16:01:21,110 [DEBUG] httpcore.http11: send_request_body.started request=<Request [b'GET']>
+2026-03-08 16:01:21,110 [DEBUG] httpcore.http11: send_request_body.complete
+2026-03-08 16:01:21,110 [DEBUG] httpcore.http11: receive_response_headers.started request=<Request [b'GET']>
+2026-03-08 16:01:21,404 [DEBUG] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sun, 08 Mar 2026 10:31:20 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'5903'), (b'Connection', b'keep-alive'), (b'Cache-Control', b'public, max-age=30, s-maxage=30'), (b'Content-Encoding', b'gzip'), (b'Last-Modified', b'Tue, 05 Aug 2025 17:58:35 GMT'), (b'ETag', b'sd3313_-1143656551'), (b'Vary', b'X-Esri-Authorization'), (b'Request-Context', b'appId=cid-v1:e760746d-7077-47f1-a125-f6cc9f1bba28'), (b'Request-Context', b'appId=cid-v1:df0fefdc-3099-4f25-a42c-d213d1e16940'), (b'x-arcgis-upstream', b'us1h07c00-services'), (b'Strict-Transport-Security', b'max-age=63072000'), (b'X-ArcGIS-Trace-Id', b'20260308T102852Z-r1b9f4dfc55c2k92hC1MAA603c0000000zvg000000001me8'), (b'x-esri-query-request-units', b'3'), (b'x-esri-tiles-basic-query-mode', b'true'), (b'x-esri-tiles-basic-query-type', b'Basic'), (b'x-esri-org-request-units-per-min', b'usage=12;max=6000'), (b'x-esri-query-geometry-field-name', b'Shape'), (b'X-ArcGIS-Correlation-Id', b'b44fcce39dda144a'), (b'X-ArcGIS-Instance', b'lf3xzxihb000001'), (b'Access-Control-Expose-Headers', b'Request-Context'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Headers', b'Content-Type, Authorization, X-Esri-Authorization'), (b'Access-Control-Allow-Credentials', b'true'), (b'x-azure-ref', b'20260308T103120Z-16b75499574wd7gjhC1MAA5qfw0000000xu0000000007yb9'), (b'x-fd-int-roxy-purgeid', b'0'), (b'X-Cache-Info', b'L2_T2'), (b'X-Cache', b'TCP_REVALIDATED_HIT'), (b'Accept-Ranges', b'bytes')])
+2026-03-08 16:01:21,405 [INFO] httpx: HTTP Request: GET https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1/query?where=1%3D1&outFields=%2A&f=json&resultRecordCount=200&returnGeometry=true "HTTP/1.1 200 OK"
+2026-03-08 16:01:21,406 [DEBUG] httpcore.http11: receive_response_body.started request=<Request [b'GET']>
+2026-03-08 16:01:21,406 [DEBUG] httpcore.http11: receive_response_body.complete
+2026-03-08 16:01:21,406 [DEBUG] httpcore.http11: response_closed.started
+2026-03-08 16:01:21,406 [DEBUG] httpcore.http11: response_closed.complete
+2026-03-08 16:01:21,407 [DEBUG] httpcore.connection: close.started
+2026-03-08 16:01:21,407 [DEBUG] httpcore.connection: close.complete
+2026-03-08 16:01:21,407 [INFO] app.services.portal: Portal query OK: https://services7.arcgis.com/xNUwUjOJqYE54USz/arcgis/rest/services/Community_Center/FeatureServer/1 → 21 records
+2026-03-08 16:01:21,408 [INFO] app.services.portal: Portal fetch for 'city_services': 221 total records
+2026-03-08 16:01:21,408 [INFO] app.data.loader: ✓ Live data for 'city_services': 221 records from portal
+2026-03-08 16:01:41,895 [INFO] app.main: Starting MontgomeryAI Backend with verbose logging enabled.
