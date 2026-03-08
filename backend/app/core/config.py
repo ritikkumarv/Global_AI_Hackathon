@@ -9,10 +9,11 @@ class Settings:
     VERSION: str = "1.0.0"
     API_PREFIX: str = "/api/v1"
 
-    # OpenAI
+    # OpenAI (Configured to use NVIDIA NIM OSS models)
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
-    OPENAI_MODEL: str = "gpt-4o-mini"
-    OPENAI_EMBEDDING_MODEL: str = "text-embedding-3-small"
+    NVIDIA_BASE_URL: str = "https://integrate.api.nvidia.com/v1"
+    OPENAI_MODEL: str = "meta/llama-3.1-70b-instruct"
+    OPENAI_EMBEDDING_MODEL: str = "nvidia/nv-embedqa-e5-v5"
 
     # Weather
     OPENWEATHER_API_KEY: str = os.getenv("OPENWEATHER_API_KEY", "")

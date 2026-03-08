@@ -31,7 +31,10 @@ async def analyze_sentiment(texts: list[dict]) -> dict:
 
 async def _analyze_with_openai(texts: list[dict]) -> dict:
     """Use OpenAI to classify sentiment of each text."""
-    client = OpenAI(api_key=settings.OPENAI_API_KEY)
+    client = OpenAI(
+        api_key=settings.OPENAI_API_KEY,
+        base_url=settings.NVIDIA_BASE_URL
+    )
 
     items = []
     sentiment_counts = {"positive": 0, "neutral": 0, "negative": 0}

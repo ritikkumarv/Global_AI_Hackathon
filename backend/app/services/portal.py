@@ -12,6 +12,7 @@ import asyncio
 import logging
 from typing import Optional
 import httpx
+from cachetools import TTLCache
 
 logger = logging.getLogger(__name__)
 
@@ -381,8 +382,16 @@ async def fetch_all_portal_data() -> dict[str, list[dict]]:
     return data
 
 
+# 5-minute TTL Cache for portal statistics
+portal_stats_cache = TTLCache(maxsize=10, ttl=300)
+
 async def get_portal_stats() -> dict:
-    """Get quick statistics from the portal (record counts only, fast)."""
+    """Get quick statistics from the portal (record counts only, fast). Uses TTL cache."""
+    
+    cached_stats = portal_stats_cache.get("stats")
+    if cached_stats is not None:
+        return cached_stats
+    
     import asyncio
 
     key_services = {
@@ -400,6 +409,9 @@ async def get_portal_stats() -> dict:
     counts = await asyncio.gather(*tasks.values(), return_exceptions=True)
     for name, count in zip(tasks.keys(), counts):
         results[name] = count if isinstance(count, int) else 0
+
+    if results:
+        portal_stats_cache["stats"] = results
 
     return results
 
