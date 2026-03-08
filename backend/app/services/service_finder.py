@@ -157,7 +157,10 @@ async def find_services(query: str) -> dict:
 
 async def _get_ai_recommendation(query: str, categories: list, services: list) -> str:
     """Generate AI-powered recommendation based on the query and matched services."""
-    client = OpenAI(api_key=settings.OPENAI_API_KEY)
+    client = OpenAI(
+        api_key=settings.OPENAI_API_KEY,
+        base_url=settings.NVIDIA_BASE_URL
+    )
 
     services_text = "\n".join(
         [f"- {s['name']}: {s['description'][:80]}... ({s.get('contact', 'N/A')})" for s in services[:5]]

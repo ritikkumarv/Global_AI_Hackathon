@@ -8,11 +8,29 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.api.routes import router
 
+import logging
+import sys
+
+# Configure verbose logging to file and console
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    handlers=[
+        logging.FileHandler("backend_verbose.log", encoding="utf-8"),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+logger = logging.getLogger(__name__)
+
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
     description="AI-Enhanced Civic Dashboard for the City of Montgomery, Alabama",
 )
+
+@app.on_event("startup")
+async def startup_event():
+    logger.info("Starting MontgomeryAI Backend with verbose logging enabled.")
 
 # CORS for frontend
 app.add_middleware(

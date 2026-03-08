@@ -6,7 +6,8 @@ import os
 from collections import deque
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from langchain_openai import ChatOpenAI
+from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage, AIMessage
 from app.core.config import settings
@@ -48,8 +49,8 @@ def get_vectorstore():
     if _vectorstore is not None:
         return _vectorstore
 
-    embeddings = OpenAIEmbeddings(
-        openai_api_key=settings.OPENAI_API_KEY,
+    embeddings = NVIDIAEmbeddings(
+        nvidia_api_key=settings.OPENAI_API_KEY,
         model=settings.OPENAI_EMBEDDING_MODEL,
     )
 
@@ -104,6 +105,7 @@ def _get_llm():
     if _llm is None:
         _llm = ChatOpenAI(
             openai_api_key=settings.OPENAI_API_KEY,
+            openai_api_base=settings.NVIDIA_BASE_URL,
             model_name=settings.OPENAI_MODEL,
             temperature=0.3,
         )
