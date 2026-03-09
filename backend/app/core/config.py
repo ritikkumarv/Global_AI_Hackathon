@@ -49,7 +49,12 @@ class Settings:
     )
 
     # CORS
-    ALLOWED_ORIGINS: list = ["http://localhost:3000", "http://127.0.0.1:3000"]
+    ALLOWED_ORIGINS: list = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "https://global-ai-hackathon-eh1m.vercel.app",
+        os.getenv("FRONTEND_URL", ""),
+    ]
 
 
 settings = Settings()
